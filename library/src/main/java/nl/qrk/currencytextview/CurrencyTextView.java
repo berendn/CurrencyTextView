@@ -2,6 +2,7 @@ package nl.qrk.currencytextview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -40,6 +41,16 @@ public class CurrencyTextView extends TextView {
 
     public CurrencyTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CurrencyTextView);
+        euroTextSizeInPixels = a.getDimension(R.styleable.CurrencyTextView_euroTextSize, getTextSize());
+        euroSignTextSizeInPixels = a.getDimension(R.styleable.CurrencyTextView_eurosignTextSize, getTextSize());
+        digitsTextSizeInPixels = a.getDimension(R.styleable.CurrencyTextView_digitsTextSize, getTextSize());
+        a.recycle();
+
+        euroSignTextSizeInPixels = Math.min(euroSignTextSizeInPixels, euroTextSizeInPixels);
+        digitsTextSizeInPixels = Math.min(digitsTextSizeInPixels, euroTextSizeInPixels);
+
         init();
     }
 

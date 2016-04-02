@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CurrencyTextView">
+        <attr name="euroTextSize" format="dimension" />
+        <attr name="eurosignTextSize" format="dimension" />
+        <attr name="digitsTextSize" format="dimension" />
+    </declare-styleable>
+</resources>
